@@ -50,11 +50,11 @@ module.exports = gql`
   type Query {
     # getCustomers(customerIds: [Followers]): [Customer]
     getBrands: [Brand]
+    login(email: String!, password: String!): User!
   }
   type Mutation {
     registerCustomer(registerInput: RegisterInput): Customer!
     registerBrand(registerInput: RegisterInputBrand): Brand!
-    login(email: String!, password: String!): User!
     followBrand(brandId: ID!, customerId: ID!): Customer!
     allocateLoyaltyPoint(points: Int!, brandId: ID!, customerId: ID!): Brand!
   }
