@@ -24,7 +24,7 @@ const generateToken = (user) => {
 }
 
 module.exports = {
-  Mutation: {
+  Query: {
     async login(_, { email, password }) {
       const { errors, valid } = validateLoginInput(email, password)
       try {
@@ -84,6 +84,8 @@ module.exports = {
         throw new Error(error)
       }
     },
+  },
+  Mutation: {
     async registerBrand(
       _,
       {
