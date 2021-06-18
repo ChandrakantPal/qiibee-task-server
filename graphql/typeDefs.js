@@ -14,6 +14,7 @@ module.exports = gql`
   type Followers {
     customerId: ID!
     loyaltyPoint: Int!
+    redeemed: Boolean!
   }
   type Customer {
     id: ID!
@@ -28,6 +29,7 @@ module.exports = gql`
   type Following {
     brandId: ID!
     loyaltyPoint: Int!
+    redeemed: Boolean!
   }
   type User {
     userType: String!
@@ -47,8 +49,16 @@ module.exports = gql`
     password: String!
     email: String!
   }
+
+  input FollowerId {
+    customerId: ID!
+    loyaltyPoint: Int!
+  }
+
   type Query {
-    # getCustomers(customerIds: [Followers]): [Customer]
+    getCustomers(customerIds: [FollowerId!]!): [Customer]
+    getFollowers(brandId: ID!): [Customer]
+    getFollowing(customerId: ID!): [Brand]
     getBrands: [Brand]
     login(email: String!, password: String!): User!
   }
@@ -57,5 +67,6 @@ module.exports = gql`
     registerBrand(registerInput: RegisterInputBrand): Brand!
     followBrand(brandId: ID!, customerId: ID!): Customer!
     allocateLoyaltyPoint(points: Int!, brandId: ID!, customerId: ID!): Brand!
+    redeemPoint(customerId: ID!, brandId: ID!): Customer!
   }
 `
