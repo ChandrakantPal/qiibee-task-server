@@ -13,6 +13,7 @@ const customerSchema = new Schema({
         ref: 'brands',
       },
       loyaltyPoint: Number,
+      redeemed: Boolean,
     },
   ],
   totalloyaltyPoint: Number,
