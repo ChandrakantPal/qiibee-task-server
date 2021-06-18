@@ -146,12 +146,9 @@ module.exports = {
 
         await newUser.save()
 
-        const token = generateToken(res)
-
         return {
           ...res._doc,
           id: res._id,
-          token,
         }
       } catch (error) {
         throw new Error(error)
@@ -208,12 +205,9 @@ module.exports = {
 
         await newUser.save()
 
-        const token = generateToken(res)
-
         return {
           ...res._doc,
           id: res._id,
-          token,
         }
       } catch (error) {
         throw new Error(error)
